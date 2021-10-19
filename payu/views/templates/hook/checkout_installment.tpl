@@ -4,10 +4,11 @@
         <span id='payu-installments-mini-cart'></span>
         <script type='text/javascript' class="payu-script-tag" >
             document.addEventListener("DOMContentLoaded", function(event) {
-                openpayu.options.creditAmount ={$total_price};
+                openpayu.options.creditAmount = {$product_price|floatval};
+                openpayu.options.posId = '{$credit_pos}';
+                openpayu.options.key = '{$credit_pos_key}';
                 openpayu.options.showLongDescription = true;
-                openpayu.options.lang = 'pl';
-                OpenPayU.Installments.miniInstallment('#payu-installments-mini-cart');
+                window.OpenPayU.Installments.miniInstallment('#payu-installments-mini-cart', openpayu.options);
             });
         </script>
     </p>

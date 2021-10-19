@@ -11,10 +11,11 @@
     <span id="payu-installment-cart-total"></span>
     <script type="text/javascript" class="payu-script-tag">
         document.addEventListener("DOMContentLoaded", function (event) {
-            openpayu.options.creditAmount ={$cart_total_amount|floatval};
+            openpayu.options.creditAmount = {$product_price|floatval};
+            openpayu.options.posId = '{$credit_pos}';
+            openpayu.options.key = '{$credit_pos_key}';
             openpayu.options.showLongDescription = true;
-            openpayu.options.lang = 'pl';
-            OpenPayU.Installments.miniInstallment('#payu-installment-cart-total');
+            window.OpenPayU.Installments.miniInstallment('#payu-installment-cart-summary', openpayu.options);
         });
 
     </script>
